@@ -1,0 +1,8 @@
+<p> Students </p>
+    <% @students.each do |student_inst|%>
+<ul>
+    <li>
+        <%= student_inst.first_name + " " + student_inst.last_name %>
+    </li>
+</ul>
+    <% end %>
