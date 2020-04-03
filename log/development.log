@@ -148,3 +148,184 @@ Migrating to CreateStudents (1)
   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Morty"], ["last_name", "Smith"], ["created_at", "2017-11-28 15:01:02.845645"], ["updated_at", "2017-11-28 15:01:02.845645"]]
   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Started GET "/" for ::1 at 2020-04-02 20:43:57 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 22ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/students" for ::1 at 2020-04-02 20:44:02 -0400
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  Rendered students/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 483ms (Views: 480.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-02 20:47:49 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (14.4ms)
+Completed 200 OK in 32ms (Views: 18.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/students" for ::1 at 2020-04-02 20:47:54 -0400
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (1.0ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (45.4ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Student:0x00007fcf8d071110>):
+    2: <ol>
+    3:     <% @students.each do |student_inst|%>
+    4:     <li>
+    5:         <%= link to student_inst.name, 'students/#{student_inst.id}' %>
+    6:     </li>
+    7: </ol>
+    8:     <% end %>
+  
+app/views/students/index.html.erb:5:in `block in _app_views_students_index_html_erb___747335268404898565_70264697822540'
+app/views/students/index.html.erb:3:in `_app_views_students_index_html_erb___747335268404898565_70264697822540'
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.8ms)
+Started GET "/students" for ::1 at 2020-04-02 20:48:04 -0400
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (6.7ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Student:0x00007fcf8d383ec0>):
+    2: <ol>
+    3:     <% @students.each do |student_inst|%>
+    4:     <li>
+    5:         <%= link_to student_inst.name, 'students/#{student_inst.id}' %>
+    6:     </li>
+    7: </ol>
+    8:     <% end %>
+  
+app/views/students/index.html.erb:5:in `block in _app_views_students_index_html_erb___747335268404898565_70264702042120'
+app/views/students/index.html.erb:3:in `_app_views_students_index_html_erb___747335268404898565_70264702042120'
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.0ms)
+Started GET "/students" for ::1 at 2020-04-02 20:48:05 -0400
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Student:0x00007fcf8d1a0590>):
+    2: <ol>
+    3:     <% @students.each do |student_inst|%>
+    4:     <li>
+    5:         <%= link_to student_inst.name, 'students/#{student_inst.id}' %>
+    6:     </li>
+    7: </ol>
+    8:     <% end %>
+  
+app/views/students/index.html.erb:5:in `block in _app_views_students_index_html_erb___747335268404898565_70264701092700'
+app/views/students/index.html.erb:3:in `_app_views_students_index_html_erb___747335268404898565_70264701092700'
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.8ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (19.9ms)
+Started GET "/students" for ::1 at 2020-04-02 20:48:22 -0400
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (5.8ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Student:0x00007fcf8e14a388>):
+    2: <ol>
+    3:     <% @students.each do |student_inst|%>
+    4:     <li>
+    5:         <%= student_inst.name %>
+    6:     </li>
+    7: </ol>
+    8:     <% end %>
+  
+app/views/students/index.html.erb:5:in `block in _app_views_students_index_html_erb___747335268404898565_70264709304360'
+app/views/students/index.html.erb:3:in `_app_views_students_index_html_erb___747335268404898565_70264709304360'
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.6ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.7ms)
+Started GET "/students" for ::1 at 2020-04-02 20:49:13 -0400
+Processing by StudentsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant StudentsController::Students):
+  
+app/controllers/students_controller.rb:3:in `index'
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.8ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jacktawil/.rvm/gems/ruby-2.6.1/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.1ms)
+Started GET "/students" for ::1 at 2020-04-02 20:49:23 -0400
+Processing by StudentsController#index as HTML
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+Started GET "/students" for ::1 at 2020-04-02 20:50:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 382ms (Views: 371.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/students" for ::1 at 2020-04-02 20:51:17 -0400
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/students" for ::1 at 2020-04-02 20:51:26 -0400
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.1ms)
+
+
